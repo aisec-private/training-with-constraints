@@ -1,0 +1,30 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+.idea/
+*.ods
+
+# Latex
+*.aux
+*.log
+*.synctex.gz
+*.bbl
+*.blg
+
+Data/
+*.csv
+*.pth
+CAV21Data/fashion_mnist_dl2_100Epochs_50Samples_0Pretrain.json
+CAV21Data/gtsrb_dl2_100Epochs_50Samples_0Pretrain.json
+CAV21Data/mnist_dl2_100Epochs_50Samples_0Pretrain.json
