@@ -1,6 +1,23 @@
 TRAINING WITH CONSTRAINTS
 ========
 
+Structure
+------------
+```
+.
+├── dl2                                  - DL2 Library
+├── createBaselineDatasets.py            - script for creating the baseline datasets
+├── createAugmentedDatasets.py           - script for creating the Random Uniform augmented datasets
+├── createFGSMAugmentedDatasets.py       - script for creating the FGSM augmented datasets
+├── mainDL2.py                           - script for DL2 loss training
+├── mainFGSM.py                          - script for Constraint Loss (Adversarial Robustness) training
+├── mainPGD.py                           - script for Adversarial training
+├── testConstraintSecurity.py            - script for testing Constraint Security
+├── testConstraintLikelihood.py          - script for testing Constraint Likelihood
+└── requirements.txt                     - pip requirements
+
+```
+
 Installation
 ------------
 Clone this repository:
@@ -12,31 +29,32 @@ Install the dependencies:
 ```
 pip install -r requirements.txt
 ```
-To properly save the datasets and models create the following structure of folders inside the main folder:
+To properly save the datasets and models create the following structure of folders:
 ```
-datasets
-      | - fashion_mnist
-            | - baseline
-            | - augmented
-            | - augmented_FGSM
-      | - gtsrb
-            | - baseline
-            | - augmented
-            | - augmented_FGSM
-models
-      | - fashion_mnist
-            | - baseline
-            | - augmented
-            | - augmented_FGSM
-            | - dl2
-      | - gtsrb
-            | - baseline
-            | - augmented
-            | - augmented_FGSM
-            | - dl2
+.
+├── datasets
+│   ├── fashion_mnist
+│   │   ├── baseline
+│   │   ├── augmented
+│   │   └── augmented_FGSM
+│   └── gtsrb
+│       ├── baseline
+│       ├── augmented
+│       └── augmented_FGSM
+└── models
+    ├── fashion_mnist
+    │   ├── baseline
+    │   ├── augmented
+    │   ├── augmented_FGSM
+    │   └── dl2
+    └── gtsrb
+        ├── baseline
+        ├── augmented
+        ├── augmented_FGSM
+        └── dl2
 ```
 
-Usage
+Reproducing Experiments and Results
 -------------
 To generate the datasets, run the commands:
 ```
@@ -70,7 +88,7 @@ python mainDL2.py --dataset gtsrb --dtype baseline --dl2-weight 0.2 --constraint
 python mainDL2.py --dataset gtsrb --dtype baseline --dl2-weight 0.2 --constraint "LipschitzG(eps=0.1, L=10)"
 python mainDL2.py --dataset gtsrb --dtype baseline --dl2-weight 0.2 --constraint "FGSM(eps=0.1, delta=10)"
 ```
-To test Constraint Security and Constraint Likelihood of the models obtained by the experiments above, use the commands:
+To test Constraint Security and Constraint Likelihood of the models obtained by the experiments above, run the commands:
 ```
 python testConstraintSecurity.py
 python testConstraintLikelihood.py
