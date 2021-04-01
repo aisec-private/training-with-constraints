@@ -206,7 +206,7 @@ if __name__ == "__main__":
     test_loader = torch.utils.data.DataLoader(Xy_test, shuffle=True, batch_size=args.batch_size, **kwargs)
 
     dtype = args.dtype
-    report_file = os.path.join(args.report_dir, f"{args.dataset}_{dtype}_{args.num_epochs}Epochs_{args.net_size}_adversarial_FGSM.json")
+    report_file = os.path.join(args.report_dir, f"{args.dataset}_{dtype}_{args.num_epochs}Epochs_adversarial_FGSM.json")
     data_dict = {
         'dataset': args.dataset,
         'dtype': dtype,
@@ -246,7 +246,7 @@ if __name__ == "__main__":
         print(f'Epoch Time [s]: {epoch_time:.4f} - Test Time [s]: {test_time:.4f} - Total Time [s]: {total_time:.4f}')
 
         if epoch > (args.num_epochs - 25):
-            torch.save(model.state_dict(), f"models/{args.dataset}/{dtype}/{args.dataset}_{dtype}_{args.num_epochs}Epochs_{epoch}_{args.net_size}_adversarial_FGSM.pth")
+            torch.save(model.state_dict(), f"models/{args.dataset}/{dtype}/{args.dataset}_{dtype}_{args.num_epochs}Epochs_{epoch}_adversarial_FGSM.pth")
 
     with open(report_file, 'w') as fou:
         json.dump(data_dict, fou, indent=4)

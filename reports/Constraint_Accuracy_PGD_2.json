@@ -1,0 +1,272 @@
+[
+    {
+        "model_name": "baseline/fashion_mnist_baseline_100Epochs_94_adversarial_PGD.pth",
+        "samples": 50,
+        "name": "TrueRobustness",
+        "constraint_params": {
+            "eps": 0,
+            "delta": 10
+        },
+        "Test p_acc": [
+            0.8506
+        ],
+        "Test c_acc": [
+            1.0
+        ]
+    },
+    {
+        "model_name": "baseline/fashion_mnist_baseline_100Epochs_94_adversarial_PGD.pth",
+        "samples": 50,
+        "name": "TrueRobustness",
+        "constraint_params": {
+            "eps": 0.02,
+            "delta": 10
+        },
+        "Test p_acc": [
+            0.8506
+        ],
+        "Test c_acc": [
+            1.0
+        ]
+    },
+    {
+        "model_name": "baseline/fashion_mnist_baseline_100Epochs_94_adversarial_PGD.pth",
+        "samples": 50,
+        "name": "TrueRobustness",
+        "constraint_params": {
+            "eps": 0.04,
+            "delta": 10
+        },
+        "Test p_acc": [
+            0.8506
+        ],
+        "Test c_acc": [
+            1.0
+        ]
+    },
+    {
+        "model_name": "baseline/fashion_mnist_baseline_100Epochs_94_adversarial_PGD.pth",
+        "samples": 50,
+        "name": "TrueRobustness",
+        "constraint_params": {
+            "eps": 0.06,
+            "delta": 10
+        },
+        "Test p_acc": [
+            0.8506
+        ],
+        "Test c_acc": [
+            1.0
+        ]
+    },
+    {
+        "model_name": "baseline/fashion_mnist_baseline_100Epochs_94_adversarial_PGD.pth",
+        "samples": 50,
+        "name": "TrueRobustness",
+        "constraint_params": {
+            "eps": 0.08,
+            "delta": 10
+        },
+        "Test p_acc": [
+            0.8506
+        ],
+        "Test c_acc": [
+            1.0
+        ]
+    },
+    {
+        "model_name": "baseline/fashion_mnist_baseline_100Epochs_94_adversarial_PGD.pth",
+        "samples": 50,
+        "name": "TrueRobustness",
+        "constraint_params": {
+            "eps": 0.1,
+            "delta": 10
+        },
+        "Test p_acc": [
+            0.8506
+        ],
+        "Test c_acc": [
+            1.0
+        ]
+    },
+    {
+        "model_name": "baseline/fashion_mnist_baseline_100Epochs_94_adversarial_PGD.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.8506
+        ],
+        "Test c_acc": [
+            0.9937697784810127
+        ]
+    },
+    {
+        "model_name": "baseline/fashion_mnist_baseline_100Epochs_94_adversarial_PGD.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.02,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.8506
+        ],
+        "Test c_acc": [
+            0.9873417721518988
+        ]
+    },
+    {
+        "model_name": "baseline/fashion_mnist_baseline_100Epochs_94_adversarial_PGD.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.04,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.8506
+        ],
+        "Test c_acc": [
+            0.9736946202531646
+        ]
+    },
+    {
+        "model_name": "baseline/fashion_mnist_baseline_100Epochs_94_adversarial_PGD.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.06,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.8506
+        ],
+        "Test c_acc": [
+            0.946993670886076
+        ]
+    },
+    {
+        "model_name": "baseline/fashion_mnist_baseline_100Epochs_94_adversarial_PGD.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.08,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.8506
+        ],
+        "Test c_acc": [
+            0.897745253164557
+        ]
+    },
+    {
+        "model_name": "baseline/fashion_mnist_baseline_100Epochs_94_adversarial_PGD.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.1,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.8506
+        ],
+        "Test c_acc": [
+            0.8344541139240507
+        ]
+    },
+    {
+        "model_name": "baseline/fashion_mnist_baseline_100Epochs_94_adversarial_PGD.pth",
+        "samples": 50,
+        "name": "LipschitzG",
+        "constraint_params": {
+            "eps": 0,
+            "L": 10
+        },
+        "Test p_acc": [
+            0.8506
+        ],
+        "Test c_acc": [
+            1.0
+        ]
+    },
+    {
+        "model_name": "baseline/fashion_mnist_baseline_100Epochs_94_adversarial_PGD.pth",
+        "samples": 50,
+        "name": "LipschitzG",
+        "constraint_params": {
+            "eps": 0.02,
+            "L": 10
+        },
+        "Test p_acc": [
+            0.8506
+        ],
+        "Test c_acc": [
+            0.0
+        ]
+    },
+    {
+        "model_name": "baseline/fashion_mnist_baseline_100Epochs_94_adversarial_PGD.pth",
+        "samples": 50,
+        "name": "LipschitzG",
+        "constraint_params": {
+            "eps": 0.04,
+            "L": 10
+        },
+        "Test p_acc": [
+            0.8506
+        ],
+        "Test c_acc": [
+            0.0
+        ]
+    },
+    {
+        "model_name": "baseline/fashion_mnist_baseline_100Epochs_94_adversarial_PGD.pth",
+        "samples": 50,
+        "name": "LipschitzG",
+        "constraint_params": {
+            "eps": 0.06,
+            "L": 10
+        },
+        "Test p_acc": [
+            0.8506
+        ],
+        "Test c_acc": [
+            0.0
+        ]
+    },
+    {
+        "model_name": "baseline/fashion_mnist_baseline_100Epochs_94_adversarial_PGD.pth",
+        "samples": 50,
+        "name": "LipschitzG",
+        "constraint_params": {
+            "eps": 0.08,
+            "L": 10
+        },
+        "Test p_acc": [
+            0.8506
+        ],
+        "Test c_acc": [
+            0.0
+        ]
+    },
+    {
+        "model_name": "baseline/fashion_mnist_baseline_100Epochs_94_adversarial_PGD.pth",
+        "samples": 50,
+        "name": "LipschitzG",
+        "constraint_params": {
+            "eps": 0.1,
+            "L": 10
+        },
+        "Test p_acc": [
+            0.8506
+        ],
+        "Test c_acc": [
+            0.0
+        ]
+    }
+]

@@ -62,7 +62,7 @@ class RobustnessConstraint(Constraint):
         self.name = 'RobustnessG'
 
     def params(self):
-        return {'eps': self.eps, 'network_output': self.network_output}
+        return {'eps': self.eps, 'delta': self.delta}
 
     def get_domains(self, x_batches, y_batches):
         assert len(x_batches) == 1
@@ -82,6 +82,76 @@ class RobustnessConstraint(Constraint):
         if self.use_cuda:
             limit = limit.cuda()
         return dl2.GEQ(pred, torch.log(limit))
+
+
+class LipschitzConstraint(Constraint):
+
+    def __init__(self, net, eps, l, use_cuda=True, network_output='logits'):
+        self.net = net
+        self.eps = eps
+        self.l = l
+        self.use_cuda = use_cuda
+        self.network_output = network_output
+        self.n_tvars = 1
+        self.n_gvars = 1
+        self.name = 'LipschitzG'
+
+    def params(self):
+        return {'eps': self.eps, 'L': self.l}
+
+    def get_domains(self, x_batches, y_batches):
+        assert len(x_batches) == 1
+        n_batch = x_batches[0].size()[0]
+
+        return [[Box(np.clip(x_batches[0][i].cpu().numpy() - self.eps, 0, 1),
+                     np.clip(x_batches[0][i].cpu().numpy() + self.eps, 0, 1))
+                for i in range(n_batch)]]
+
+    def get_condition(self, z_inp, z_out, x_batches, y_batches):
+        n_batch = z_inp[0].size()[0]
+
+        x_out = self.net(x_batches[0])
+        z_out = z_out[0]
+
+        x_out = torch.clamp(x_out, -100, 100)
+        z_out = torch.clamp(z_out, -100, 100)
+
+        out_norm = torch.norm(x_out - z_out, p=float("inf"), dim=1)
+        inp_norm = torch.norm((x_batches[0] - z_inp[0]).view((n_batch, -1)), p=float("inf"), dim=1)
+
+        return dl2.LEQ(out_norm, self.l * inp_norm)
+
+
+class PseudoRobustnessConstraint(Constraint):
+    def __init__(self, net, eps, use_cuda=True, network_output='logits'):
+        self.net = net
+        self.network_output = network_output
+        self.eps = eps
+        self.use_cuda = use_cuda
+        self.n_tvars = 1
+        self.n_gvars = 1
+        self.name = 'PseudoRobustness'
+
+    def params(self):
+        return {'eps': self.eps}
+
+    def get_domains(self, x_batches, y_batches):
+        assert len(x_batches) == 1
+        n_batch = x_batches[0].size()[0]
+
+        return [[Box(np.clip(x_batches[0][i].cpu().numpy() - self.eps, 0, 1),
+                     np.clip(x_batches[0][i].cpu().numpy() + self.eps, 0, 1))
+                for i in range(n_batch)]]
+
+    def get_condition(self, z_inp, z_out, x_batches, y_batches):
+        n_batch = x_batches[0].size()[0]
+        z_out = torch.clamp(z_out[0], -100, 100)
+        pred_argmax = torch.argmax(z_out, dim=1)
+
+        pred_labels = z_out[np.arange(n_batch), pred_argmax]
+        true_labels = z_out[np.arange(n_batch), y_batches[0]]
+
+        return dl2.GEQ(true_labels, pred_labels)
 
 
 class TrueRobustnessConstraint(Constraint):
@@ -107,20 +177,11 @@ class TrueRobustnessConstraint(Constraint):
                 for i in range(n_batch)]]
 
     def get_condition(self, z_inp, z_out, x_batches, y_batches):
-        # x_out = F.softmax(self.net(x_batches[0]), dim=1)
-        # z_out = F.softmax(z_out[0], dim=1)
-
         x_out = self.net(x_batches[0])
         z_out = z_out[0]
 
         x_out = torch.clamp(x_out, -100, 100)
         z_out = torch.clamp(z_out, -100, 100)
-
-        # x_out -= x_out.min(1, keepdim=True)[0]
-        # z_out -= z_out.min(1, keepdim=True)[0]
-
-        # x_out /= x_out.max(1, keepdim=True)[0]
-        # z_out /= z_out.max(1, keepdim=True)[0]
 
         return dl2.LEQ(torch.norm(x_out - z_out, p=float("inf"), dim=1), self.delta)
 
@@ -195,16 +256,19 @@ def fgsm_attack(x_batches, y_batches, model, epsilon, delta):
         # output = F.softmax(output, dim=1)
         # output_p = F.softmax(output_p, dim=1)
 
-        output -= output.min(1, keepdim=True)[0]
-        output /= output.max(1, keepdim=True)[0]
-        output_p -= output_p.min(1, keepdim=True)[0]
-        output_p /= output_p.max(1, keepdim=True)[0]
+        # output -= output.min(1, keepdim=True)[0]
+        # output /= output.max(1, keepdim=True)[0]
+        # output_p -= output_p.min(1, keepdim=True)[0]
+        # output_p /= output_p.max(1, keepdim=True)[0]
+
+        output = torch.clamp(output, -100, 100)
+        output_p = torch.clamp(output_p, -100, 100)
 
         distance = torch.norm(output - output_p, p=float("inf"), dim=1)
         if distance > delta:
             number_of_samples_found += 1
 
-    return number_of_samples_found
+    return number_of_samples_found / x_batches.size()[0]
 
 
 class PGDConstraint(Constraint):

@@ -1,0 +1,272 @@
+[
+    {
+        "model_name": "baseline/gtsrb_baseline_100Epochs_96_adversarial_PGD.pth",
+        "samples": 50,
+        "name": "TrueRobustness",
+        "constraint_params": {
+            "eps": 0,
+            "delta": 10
+        },
+        "Test p_acc": [
+            0.8350119904076738
+        ],
+        "Test c_acc": [
+            1.0
+        ]
+    },
+    {
+        "model_name": "baseline/gtsrb_baseline_100Epochs_96_adversarial_PGD.pth",
+        "samples": 50,
+        "name": "TrueRobustness",
+        "constraint_params": {
+            "eps": 0.02,
+            "delta": 10
+        },
+        "Test p_acc": [
+            0.8350119904076738
+        ],
+        "Test c_acc": [
+            1.0
+        ]
+    },
+    {
+        "model_name": "baseline/gtsrb_baseline_100Epochs_96_adversarial_PGD.pth",
+        "samples": 50,
+        "name": "TrueRobustness",
+        "constraint_params": {
+            "eps": 0.04,
+            "delta": 10
+        },
+        "Test p_acc": [
+            0.8350119904076738
+        ],
+        "Test c_acc": [
+            1.0
+        ]
+    },
+    {
+        "model_name": "baseline/gtsrb_baseline_100Epochs_96_adversarial_PGD.pth",
+        "samples": 50,
+        "name": "TrueRobustness",
+        "constraint_params": {
+            "eps": 0.06,
+            "delta": 10
+        },
+        "Test p_acc": [
+            0.8350119904076738
+        ],
+        "Test c_acc": [
+            1.0
+        ]
+    },
+    {
+        "model_name": "baseline/gtsrb_baseline_100Epochs_96_adversarial_PGD.pth",
+        "samples": 50,
+        "name": "TrueRobustness",
+        "constraint_params": {
+            "eps": 0.08,
+            "delta": 10
+        },
+        "Test p_acc": [
+            0.8350119904076738
+        ],
+        "Test c_acc": [
+            1.0
+        ]
+    },
+    {
+        "model_name": "baseline/gtsrb_baseline_100Epochs_96_adversarial_PGD.pth",
+        "samples": 50,
+        "name": "TrueRobustness",
+        "constraint_params": {
+            "eps": 0.1,
+            "delta": 10
+        },
+        "Test p_acc": [
+            0.8350119904076738
+        ],
+        "Test c_acc": [
+            1.0
+        ]
+    },
+    {
+        "model_name": "baseline/gtsrb_baseline_100Epochs_96_adversarial_PGD.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.8350119904076738
+        ],
+        "Test c_acc": [
+            0.9933712121212122
+        ]
+    },
+    {
+        "model_name": "baseline/gtsrb_baseline_100Epochs_96_adversarial_PGD.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.02,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.8350119904076738
+        ],
+        "Test c_acc": [
+            0.9885275900900902
+        ]
+    },
+    {
+        "model_name": "baseline/gtsrb_baseline_100Epochs_96_adversarial_PGD.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.04,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.8350119904076738
+        ],
+        "Test c_acc": [
+            0.9747965294840295
+        ]
+    },
+    {
+        "model_name": "baseline/gtsrb_baseline_100Epochs_96_adversarial_PGD.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.06,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.8350119904076738
+        ],
+        "Test c_acc": [
+            0.9551661036036037
+        ]
+    },
+    {
+        "model_name": "baseline/gtsrb_baseline_100Epochs_96_adversarial_PGD.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.08,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.8350119904076738
+        ],
+        "Test c_acc": [
+            0.8986294533169533
+        ]
+    },
+    {
+        "model_name": "baseline/gtsrb_baseline_100Epochs_96_adversarial_PGD.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.1,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.8350119904076738
+        ],
+        "Test c_acc": [
+            0.7874180999181
+        ]
+    },
+    {
+        "model_name": "baseline/gtsrb_baseline_100Epochs_96_adversarial_PGD.pth",
+        "samples": 50,
+        "name": "LipschitzG",
+        "constraint_params": {
+            "eps": 0,
+            "L": 10
+        },
+        "Test p_acc": [
+            0.8350119904076738
+        ],
+        "Test c_acc": [
+            1.0
+        ]
+    },
+    {
+        "model_name": "baseline/gtsrb_baseline_100Epochs_96_adversarial_PGD.pth",
+        "samples": 50,
+        "name": "LipschitzG",
+        "constraint_params": {
+            "eps": 0.02,
+            "L": 10
+        },
+        "Test p_acc": [
+            0.8350119904076738
+        ],
+        "Test c_acc": [
+            0.0
+        ]
+    },
+    {
+        "model_name": "baseline/gtsrb_baseline_100Epochs_96_adversarial_PGD.pth",
+        "samples": 50,
+        "name": "LipschitzG",
+        "constraint_params": {
+            "eps": 0.04,
+            "L": 10
+        },
+        "Test p_acc": [
+            0.8350119904076738
+        ],
+        "Test c_acc": [
+            0.0
+        ]
+    },
+    {
+        "model_name": "baseline/gtsrb_baseline_100Epochs_96_adversarial_PGD.pth",
+        "samples": 50,
+        "name": "LipschitzG",
+        "constraint_params": {
+            "eps": 0.06,
+            "L": 10
+        },
+        "Test p_acc": [
+            0.8350119904076738
+        ],
+        "Test c_acc": [
+            0.0
+        ]
+    },
+    {
+        "model_name": "baseline/gtsrb_baseline_100Epochs_96_adversarial_PGD.pth",
+        "samples": 50,
+        "name": "LipschitzG",
+        "constraint_params": {
+            "eps": 0.08,
+            "L": 10
+        },
+        "Test p_acc": [
+            0.8350119904076738
+        ],
+        "Test c_acc": [
+            0.0
+        ]
+    },
+    {
+        "model_name": "baseline/gtsrb_baseline_100Epochs_96_adversarial_PGD.pth",
+        "samples": 50,
+        "name": "LipschitzG",
+        "constraint_params": {
+            "eps": 0.1,
+            "L": 10
+        },
+        "Test p_acc": [
+            0.8350119904076738
+        ],
+        "Test c_acc": [
+            0.0
+        ]
+    }
+]

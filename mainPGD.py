@@ -13,45 +13,17 @@ import time
 import os
 
 
-def RobustnessG(eps, delta):
-    return lambda model, use_cuda, network_output: RobustnessConstraint(model, eps, delta, use_cuda, network_output=network_output)
-
-
-def RobustnessG1Class(eps, delta):
-    return lambda model, use_cuda, network_output: RobustnessConstraint1Class(model, eps, delta, use_cuda, network_output=network_output)
-
-
 def TrueRobustness(eps, delta):
     return lambda model, use_cuda, network_output: TrueRobustnessConstraint(model, eps, delta, use_cuda)
-
-
-def PseudoRobustness(eps):
-    return lambda model, use_cuda, network_output: PseudoRobustnessConstraint(model, eps, use_cuda, network_output=network_output)
-
-
-def LipschitzG(eps, L):
-    return lambda model, use_cuda, network_output: LipschitzConstraint(model, eps=eps, l=L, use_cuda=use_cuda, network_output=network_output)
-
-
-def FGSM(eps, delta):
-    return lambda model, use_cuda, network_output: FGSMConstraint(model, eps, delta, use_cuda)
-
-
-def PGD(eps, alpha, iters):
-    return lambda model, use_cuda, network_output: PGDConstraint(model, eps, alpha, iters, use_cuda)
 
 
 def train(args, oracle, net, device, train_loader, optimizer, epoch):
     t1 = time.time()
     num_steps = 0
-    avg_train_acc, avg_constr_acc = 0, 0
-    avg_ce_loss, avg_dl2_loss = 0, 0
+    avg_train_acc, avg_PGD_acc = 0, 0
+    avg_ce_loss, avg_PGD_loss = 0, 0
     ce_loss = torch.nn.CrossEntropyLoss()
-
-    # Change the DL2 loss multiplier based on the epoch
-    dl2_weight = args.dl2_weight
-    if epoch <= args.delay * 2:
-        dl2_weight = dl2_weight / 2
+    ce_PGD_loss = torch.nn.CrossEntropyLoss()
 
     print('\nEpoch ', epoch)
     for batch_idx, (data, target) in enumerate(train_loader):
@@ -62,22 +34,8 @@ def train(args, oracle, net, device, train_loader, optimizer, epoch):
 
         x_outputs = net(x_batch)
         x_outputs = torch.clamp(x_outputs, -100, 100)
-
-        x_correct = torch.mean(torch.argmax(x_outputs, dim=1).eq(y_batch).float())
         ce_batch_loss = ce_loss(x_outputs, y_batch)
-        
-        if epoch <= args.delay or args.dl2_weight < 1e-7:
-            net.train()
-            optimizer.zero_grad()
-            ce_batch_loss.backward()
-            optimizer.step()
-
-            avg_train_acc += x_correct.item()
-            avg_ce_loss += ce_batch_loss.item()
-
-            if batch_idx % args.print_freq == 0:
-                print(f'[{batch_idx}] Train p_acc: {x_correct.item():.4f}, CE loss: {ce_batch_loss.item():.4f}')
-            continue
+        x_correct = torch.mean(torch.argmax(x_outputs, dim=1).eq(y_batch).float())
 
         x_batches, y_batches = [], []
         k = n_batch // oracle.constraint.n_tvars
@@ -88,37 +46,36 @@ def train(args, oracle, net, device, train_loader, optimizer, epoch):
 
         net.eval()
 
-        if oracle.constraint.n_gvars > 0:
-            domains = oracle.constraint.get_domains(x_batches, y_batches)
-            z_batches = oracle.general_attack(x_batches, y_batches, domains, num_restarts=1, num_iters=args.num_iters, args=args)
-            _, dl2_batch_loss, constr_acc = oracle.evaluate(x_batches, y_batches, z_batches, args)
-        else:
-            _, dl2_batch_loss, constr_acc = oracle.evaluate(x_batches, y_batches, None, args)
+        domains = oracle.constraint.get_domains(x_batches, y_batches)
+        z_batches = oracle.general_attack(x_batches, y_batches, domains, num_restarts=1, num_iters=args.num_iters, args=args)
+        z_inputs = [torch.cuda.FloatTensor(z_batch) for z_batch in z_batches]
+
+        z_outputs = net(z_inputs[0])
+        z_outputs = torch.clamp(z_outputs, -100, 100)
+        PGD_batch_loss = ce_PGD_loss(z_outputs, y_batch)
 
         avg_train_acc += x_correct.item()
-        avg_constr_acc += constr_acc.item()
         avg_ce_loss += ce_batch_loss.item()
-        avg_dl2_loss += dl2_batch_loss.item()
+        avg_PGD_loss += PGD_batch_loss.item()
 
         if batch_idx % args.print_freq == 0:
-            print(f'[{batch_idx}] Train p_acc: {x_correct.item():.4f}, Train c_acc: {constr_acc.item():.4f}, CE loss: {ce_batch_loss.item():.4f}, DL2 loss: {dl2_batch_loss.item():.4f}')
+            print(f'[{batch_idx}] Train p_acc: {x_correct.item():.4f}, CE loss: {ce_batch_loss.item():.4f}, PGD loss: {PGD_batch_loss.item():.4f}')
 
         net.train()
         optimizer.zero_grad()
-        tot_batch_loss = dl2_weight * dl2_batch_loss + ce_batch_loss
+        tot_batch_loss = args.alfa * ce_batch_loss + args.beta * PGD_batch_loss
         tot_batch_loss.backward()
         optimizer.step()
     t2 = time.time()
         
     avg_train_acc /= float(num_steps)
-    avg_constr_acc /= float(num_steps)
-    avg_dl2_loss /= float(num_steps)
+    avg_PGD_loss /= float(num_steps)
     avg_ce_loss /= float(num_steps)
     
-    return avg_train_acc, avg_constr_acc, avg_dl2_loss, avg_ce_loss, t1, t2
+    return avg_train_acc, avg_PGD_loss, avg_ce_loss, t1, t2
 
 
-def test(args, oracle, model, device, test_loader):
+def test(args, model, device, test_loader):
     loss = torch.nn.CrossEntropyLoss()
     model.eval()
     test_loss = 0
@@ -128,23 +85,7 @@ def test(args, oracle, model, device, test_loader):
         num_steps += 1
         data = data.float()
         x_batch, y_batch = data.to(device), target.to(device)
-        
-        n_batch = int(x_batch.size()[0])
-        x_batches, y_batches = [], []
-        k = n_batch // oracle.constraint.n_tvars
-        assert n_batch % oracle.constraint.n_tvars == 0, 'Batch size must be divisible by number of train variables!'
 
-        for i in range(oracle.constraint.n_tvars):
-            x_batches.append(x_batch[i:(i + k)])
-            y_batches.append(y_batch[i:(i + k)])
-        
-        if oracle.constraint.n_gvars > 0:
-            domains = oracle.constraint.get_domains(x_batches, y_batches)
-            z_batches = oracle.general_attack(x_batches, y_batches, domains, num_restarts=1, num_iters=args.num_iters, args=args)
-            _, dl2_batch_loss, constr_acc = oracle.evaluate(x_batches, y_batches, z_batches, args)
-        else:
-            _, dl2_batch_loss, constr_acc = oracle.evaluate(x_batches, y_batches, None, args)
-        
         output = model(x_batch)
         output = torch.clamp(output, -100, 100)
         
@@ -152,29 +93,27 @@ def test(args, oracle, model, device, test_loader):
         pred = output.max(1, keepdim=True)[1]  # get the index of the max log-probability
             
         correct += pred.eq(y_batch.view_as(pred)).sum().item()
-        constr += constr_acc.item()
 
     test_loss /= len(test_loader.dataset)
-    print(f"\nTest p_acc: {correct / len(test_loader.dataset):.4f}, Test c_acc: {(constr / float(num_steps)):.4f}, Average loss: {test_loss:.4f}")
+    print(f"\nTest p_acc: {correct / len(test_loader.dataset):.4f}, Average loss: {test_loss:.4f}")
 
-    return correct / len(test_loader.dataset), constr / float(num_steps)
+    return correct / len(test_loader.dataset)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Train NN with constraints.')
     parser = dl2.add_default_parser_args(parser)
     parser.add_argument('--batch-size', type=int, default=128, help='Number of samples in a batch.')
-    parser.add_argument('--num-iters', type=int, default=50, help='Number of oracle iterations.')
     parser.add_argument('--num-epochs', type=int, default=100, help='Number of epochs to train for.')
-    parser.add_argument('--dl2-weight', type=float, default=0.0, help='Weight of DL2 loss.')
+    parser.add_argument('--alfa', type=float, default=1, help='Weight of ce loss.')
+    parser.add_argument('--beta', type=float, default=0.2, help='Weight of ce PGD loss.')
+    parser.add_argument('--num-iters', type=int, default=50, help='PGD number of iterations.')
     parser.add_argument('--dataset', type=str, required=True, help=['mnist', 'fashion_mnist', 'gtsrb', 'cifar10', 'coil20unproc', 'coil20proc'])
-    parser.add_argument('--delay', type=int, default=0, help='How many epochs to wait before training with constraints.')
     parser.add_argument('--print-freq', type=int, default=10, help='Print frequency.')
-    parser.add_argument('--report-dir', type=str, default='reports', help='Directory where results should be stored')
-    parser.add_argument('--constraint', type=str, default="RobustnessG(eps=0.3, delta=0.52)", help='the constraint to train with')
     parser.add_argument('--network-output', type=str, choices=['logits', 'prob', 'logprob'], default='logits', help='Wether to treat the output of the network as logits, probabilities or log(probabilities) in the constraints.')
-    parser.add_argument('--dtype', type=str, default='baseline', choices=['baseline', 'augmented', 'augmented_FGSM', 'augmented_PGD'])
-    parser.add_argument('--tanh', type=bool, default=False, help='Whether or not to use tanh instead of relu.')
+    parser.add_argument('--constraint', type=str, default="TrueRobustness(eps=0.1, delta=10)", help='the constraint to train with')
+    parser.add_argument('--report-dir', type=str, default='reports', help='Directory where results should be stored')
+    parser.add_argument('--dtype', type=str, default='baseline', choices=['baseline', 'augmented', 'augmented_PGD'])
     parser.add_argument('--net-size', type=str, default='small', choices=['big', 'small'],help='Whether to use the big or small network')
     args = parser.parse_args()
 
@@ -198,9 +137,7 @@ if __name__ == "__main__":
         transform_test = transforms.Compose([transforms.ToTensor()])
         Xy_train = MyDataset(dataset=args.dataset, dtype=args.dtype, train=True, transform=transform_train)
         Xy_test = MyDataset(dataset=args.dataset, dtype=args.dtype, train=False, transform=transform_test)
-        if args.tanh:
-            model = MnistNetTanh(dim=1).to(device)
-        elif args.net_size == 'big':
+        if args.net_size == 'big':
             model = MnistNet(dim=1).to(device)
         elif args.net_size == 'small':
             model = FASHIONSmall(dim=1).to(device)
@@ -243,40 +180,31 @@ if __name__ == "__main__":
     constraint = eval(args.constraint)(model, use_cuda, network_output=args.network_output)
     oracle = DL2_Oracle(learning_rate=0.01, net=model, constraint=constraint, use_cuda=use_cuda)
 
-    dtype = args.dtype if args.dl2_weight < 1e-7 else 'dl2'
-    report_file = os.path.join(args.report_dir, f"{args.dataset}_{dtype}_{args.num_epochs}Epochs_{args.num_iters}Samples_{constraint.name}.json")
+    dtype = args.dtype
+    report_file = os.path.join(args.report_dir, f"{args.dataset}_{dtype}_{args.num_epochs}Epochs_adversarial_PGD.json")
     data_dict = {
         'dataset': args.dataset,
         'dtype': dtype,
-        'dl2_weight': args.dl2_weight,
         'epochs': args.num_epochs,
-        'samples': args.num_iters,
-        'pretrain': args.delay,
-        'name': constraint.name,
-        'constraint_txt': args.constraint,
-        'constraint_params': constraint.params(),
+        'name': 'PGD Loss',
         'ce_loss': [],
-        'dl2_loss': [],
+        'PGD_loss': [],
         'Train p_acc': [],
-        'Train c_acc': [],
         'Test p_acc': [],
-        'Test c_acc': [],
         'epoch_time': [],
         'test_time': [],
         'total_time': []
     }
 
     for epoch in range(1, args.num_epochs + 1):
-        avg_train_acc, avg_constr_acc, avg_dl2_loss, avg_ce_loss, t1, t2 = \
+        avg_train_acc, avg_PGD_loss, avg_ce_loss, t1, t2 = \
             train(args, oracle, model, device, train_loader, optimizer, epoch)
         data_dict['Train p_acc'].append(avg_train_acc)
-        data_dict['Train c_acc'].append(avg_constr_acc)
         data_dict['ce_loss'].append(avg_ce_loss)
-        data_dict['dl2_loss'].append(avg_dl2_loss)
+        data_dict['PGD_loss'].append(avg_PGD_loss)
         
-        p, c = test(args, oracle, model, device, test_loader)
-        data_dict['Test p_acc'].append(p)
-        data_dict['Test c_acc'].append(c)
+        p_acc = test(args, model, device, test_loader)
+        data_dict['Test p_acc'].append(p_acc)
 
         t3 = time.time()
         epoch_time = t2 - t1
@@ -289,7 +217,7 @@ if __name__ == "__main__":
         print(f'Epoch Time [s]: {epoch_time:.4f} - Test Time [s]: {test_time:.4f} - Total Time [s]: {total_time:.4f}')
 
         if epoch > (args.num_epochs - 25):
-            torch.save(model.state_dict(), f"models/{args.dataset}/{dtype}/{args.dataset}_{dtype}_{args.num_epochs}Epochs_{args.num_iters}Samples_{constraint.name}_{epoch}.pth")
+            torch.save(model.state_dict(), f"models/{args.dataset}/{dtype}/{args.dataset}_{dtype}_{args.num_epochs}Epochs_{epoch}_adversarial_PGD.pth")
 
     with open(report_file, 'w') as fou:
         json.dump(data_dict, fou, indent=4)

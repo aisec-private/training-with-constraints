@@ -11,7 +11,6 @@ class GTSRBSmall(nn.Module):
         self.fc2 = nn.Linear(100, 10)
 
     def forward(self, x):
-        # size = x.size()[1] * x.size()[2] * x.size()[3]
         x = torch.reshape(x, (-1, 2304))
         x = F.relu(self.fc1(x))
         x = self.fc2(x)
@@ -25,7 +24,6 @@ class FASHIONSmall(nn.Module):
         self.fc2 = nn.Linear(100, 10)
 
     def forward(self, x):
-        # size = x.size()[1] * x.size()[2] * x.size()[3]
         x = torch.reshape(x, (-1, 784))
         x = F.relu(self.fc1(x))
         x = self.fc2(x)

@@ -1,0 +1,92 @@
+[
+    {
+        "model_name": "baseline/fashion_mnist_baseline_100Epochs_50Samples_TrueRobustness_94.pth",
+        "samples": 2,
+        "name": "TrueRobustness",
+        "constraint_params": {
+            "eps": 0.1,
+            "delta": 10
+        },
+        "Test p_acc": [
+            0.8817
+        ],
+        "Test c_acc": [
+            1.0
+        ]
+    },
+    {
+        "model_name": "baseline/fashion_mnist_baseline_100Epochs_50Samples_TrueRobustness_94.pth",
+        "samples": 2,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.1,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.8817
+        ],
+        "Test c_acc": [
+            0.9953520569620253
+        ]
+    },
+    {
+        "model_name": "augmented/fashion_mnist_augmented_100Epochs_50Samples_TrueRobustness_95.pth",
+        "samples": 2,
+        "name": "TrueRobustness",
+        "constraint_params": {
+            "eps": 0.1,
+            "delta": 10
+        },
+        "Test p_acc": [
+            0.886
+        ],
+        "Test c_acc": [
+            1.0
+        ]
+    },
+    {
+        "model_name": "augmented/fashion_mnist_augmented_100Epochs_50Samples_TrueRobustness_95.pth",
+        "samples": 2,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.1,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.886
+        ],
+        "Test c_acc": [
+            0.9888251582278481
+        ]
+    },
+    {
+        "model_name": "augmented_FGSM/fashion_mnist_augmented_FGSM_100Epochs_50Samples_TrueRobustness_98.pth",
+        "samples": 2,
+        "name": "TrueRobustness",
+        "constraint_params": {
+            "eps": 0.1,
+            "delta": 10
+        },
+        "Test p_acc": [
+            0.8876
+        ],
+        "Test c_acc": [
+            1.0
+        ]
+    },
+    {
+        "model_name": "augmented_FGSM/fashion_mnist_augmented_FGSM_100Epochs_50Samples_TrueRobustness_98.pth",
+        "samples": 2,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.1,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.8876
+        ],
+        "Test c_acc": [
+            0.9858583860759493
+        ]
+    }
+]

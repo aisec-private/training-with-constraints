@@ -1,0 +1,467 @@
+[
+    {
+        "model_name": "dl2/fashion_mnist_dl2_100Epochs_50Samples_LipschitzG_98.pth",
+        "samples": 50,
+        "name": "TrueRobustness",
+        "constraint_params": {
+            "eps": 0,
+            "delta": 10
+        },
+        "Test p_acc": [
+            0.8657
+        ],
+        "Test c_acc": [
+            1.0
+        ]
+    },
+    {
+        "model_name": "dl2/fashion_mnist_dl2_100Epochs_50Samples_LipschitzG_98.pth",
+        "samples": 50,
+        "name": "TrueRobustness",
+        "constraint_params": {
+            "eps": 0.02,
+            "delta": 10
+        },
+        "Test p_acc": [
+            0.8657
+        ],
+        "Test c_acc": [
+            1.0
+        ]
+    },
+    {
+        "model_name": "dl2/fashion_mnist_dl2_100Epochs_50Samples_LipschitzG_98.pth",
+        "samples": 50,
+        "name": "TrueRobustness",
+        "constraint_params": {
+            "eps": 0.04,
+            "delta": 10
+        },
+        "Test p_acc": [
+            0.8657
+        ],
+        "Test c_acc": [
+            1.0
+        ]
+    },
+    {
+        "model_name": "dl2/fashion_mnist_dl2_100Epochs_50Samples_LipschitzG_98.pth",
+        "samples": 50,
+        "name": "TrueRobustness",
+        "constraint_params": {
+            "eps": 0.06,
+            "delta": 10
+        },
+        "Test p_acc": [
+            0.8657
+        ],
+        "Test c_acc": [
+            1.0
+        ]
+    },
+    {
+        "model_name": "dl2/fashion_mnist_dl2_100Epochs_50Samples_LipschitzG_98.pth",
+        "samples": 50,
+        "name": "TrueRobustness",
+        "constraint_params": {
+            "eps": 0.08,
+            "delta": 10
+        },
+        "Test p_acc": [
+            0.8657
+        ],
+        "Test c_acc": [
+            1.0
+        ]
+    },
+    {
+        "model_name": "dl2/fashion_mnist_dl2_100Epochs_50Samples_LipschitzG_98.pth",
+        "samples": 50,
+        "name": "TrueRobustness",
+        "constraint_params": {
+            "eps": 0.1,
+            "delta": 10
+        },
+        "Test p_acc": [
+            0.8657
+        ],
+        "Test c_acc": [
+            1.0
+        ]
+    },
+    {
+        "model_name": "dl2/fashion_mnist_dl2_100Epochs_50Samples_LipschitzG_98.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.8657
+        ],
+        "Test c_acc": [
+            0.9984177215189873
+        ]
+    },
+    {
+        "model_name": "dl2/fashion_mnist_dl2_100Epochs_50Samples_LipschitzG_98.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.02,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.8657
+        ],
+        "Test c_acc": [
+            0.9970332278481012
+        ]
+    },
+    {
+        "model_name": "dl2/fashion_mnist_dl2_100Epochs_50Samples_LipschitzG_98.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.04,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.8657
+        ],
+        "Test c_acc": [
+            0.9951542721518988
+        ]
+    },
+    {
+        "model_name": "dl2/fashion_mnist_dl2_100Epochs_50Samples_LipschitzG_98.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.06,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.8657
+        ],
+        "Test c_acc": [
+            0.9908030063291139
+        ]
+    },
+    {
+        "model_name": "dl2/fashion_mnist_dl2_100Epochs_50Samples_LipschitzG_98.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.08,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.8657
+        ],
+        "Test c_acc": [
+            0.9809137658227848
+        ]
+    },
+    {
+        "model_name": "dl2/fashion_mnist_dl2_100Epochs_50Samples_LipschitzG_98.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.1,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.8657
+        ],
+        "Test c_acc": [
+            0.9664754746835443
+        ]
+    },
+    {
+        "model_name": "dl2/fashion_mnist_dl2_100Epochs_50Samples_LipschitzG_98.pth",
+        "samples": 50,
+        "name": "LipschitzG",
+        "constraint_params": {
+            "eps": 0,
+            "L": 10
+        },
+        "Test p_acc": [
+            0.8657
+        ],
+        "Test c_acc": [
+            1.0
+        ]
+    },
+    {
+        "model_name": "dl2/fashion_mnist_dl2_100Epochs_50Samples_LipschitzG_98.pth",
+        "samples": 50,
+        "name": "LipschitzG",
+        "constraint_params": {
+            "eps": 0.02,
+            "L": 10
+        },
+        "Test p_acc": [
+            0.8657
+        ],
+        "Test c_acc": [
+            0.12806566455696203
+        ]
+    },
+    {
+        "model_name": "dl2/fashion_mnist_dl2_100Epochs_50Samples_LipschitzG_98.pth",
+        "samples": 50,
+        "name": "LipschitzG",
+        "constraint_params": {
+            "eps": 0.04,
+            "L": 10
+        },
+        "Test p_acc": [
+            0.8657
+        ],
+        "Test c_acc": [
+            0.18532436708860758
+        ]
+    },
+    {
+        "model_name": "dl2/fashion_mnist_dl2_100Epochs_50Samples_LipschitzG_98.pth",
+        "samples": 50,
+        "name": "LipschitzG",
+        "constraint_params": {
+            "eps": 0.06,
+            "L": 10
+        },
+        "Test p_acc": [
+            0.8657
+        ],
+        "Test c_acc": [
+            0.18651107594936708
+        ]
+    },
+    {
+        "model_name": "dl2/fashion_mnist_dl2_100Epochs_50Samples_LipschitzG_98.pth",
+        "samples": 50,
+        "name": "LipschitzG",
+        "constraint_params": {
+            "eps": 0.08,
+            "L": 10
+        },
+        "Test p_acc": [
+            0.8657
+        ],
+        "Test c_acc": [
+            0.15120648734177214
+        ]
+    },
+    {
+        "model_name": "dl2/fashion_mnist_dl2_100Epochs_50Samples_LipschitzG_98.pth",
+        "samples": 50,
+        "name": "LipschitzG",
+        "constraint_params": {
+            "eps": 0.1,
+            "L": 10
+        },
+        "Test p_acc": [
+            0.8657
+        ],
+        "Test c_acc": [
+            0.15615110759493672
+        ]
+    },
+    {
+        "model_name": "dl2/gtsrb_dl2_100Epochs_50Samples_LipschitzG_100.pth",
+        "samples": 50,
+        "name": "TrueRobustness",
+        "constraint_params": {
+            "eps": 0,
+            "delta": 10
+        },
+        "Test p_acc": [
+            0.9311750599520384
+        ],
+        "Test c_acc": [
+            1.0
+        ]
+    },
+    {
+        "model_name": "dl2/gtsrb_dl2_100Epochs_50Samples_LipschitzG_100.pth",
+        "samples": 50,
+        "name": "TrueRobustness",
+        "constraint_params": {
+            "eps": 0.02,
+            "delta": 10
+        },
+        "Test p_acc": [
+            0.9311750599520384
+        ],
+        "Test c_acc": [
+            1.0
+        ]
+    },
+    {
+        "model_name": "dl2/gtsrb_dl2_100Epochs_50Samples_LipschitzG_100.pth",
+        "samples": 50,
+        "name": "TrueRobustness",
+        "constraint_params": {
+            "eps": 0.04,
+            "delta": 10
+        },
+        "Test p_acc": [
+            0.9311750599520384
+        ],
+        "Test c_acc": [
+            1.0
+        ]
+    },
+    {
+        "model_name": "dl2/gtsrb_dl2_100Epochs_50Samples_LipschitzG_100.pth",
+        "samples": 50,
+        "name": "TrueRobustness",
+        "constraint_params": {
+            "eps": 0.06,
+            "delta": 10
+        },
+        "Test p_acc": [
+            0.9311750599520384
+        ],
+        "Test c_acc": [
+            1.0
+        ]
+    },
+    {
+        "model_name": "dl2/gtsrb_dl2_100Epochs_50Samples_LipschitzG_100.pth",
+        "samples": 50,
+        "name": "TrueRobustness",
+        "constraint_params": {
+            "eps": 0.08,
+            "delta": 10
+        },
+        "Test p_acc": [
+            0.9311750599520384
+        ],
+        "Test c_acc": [
+            1.0
+        ]
+    },
+    {
+        "model_name": "dl2/gtsrb_dl2_100Epochs_50Samples_LipschitzG_100.pth",
+        "samples": 50,
+        "name": "TrueRobustness",
+        "constraint_params": {
+            "eps": 0.1,
+            "delta": 10
+        },
+        "Test p_acc": [
+            0.9311750599520384
+        ],
+        "Test c_acc": [
+            1.0
+        ]
+    },
+    {
+        "model_name": "dl2/gtsrb_dl2_100Epochs_50Samples_LipschitzG_100.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9311750599520384
+        ],
+        "Test c_acc": [
+            0.993671938984439
+        ]
+    },
+    {
+        "model_name": "dl2/gtsrb_dl2_100Epochs_50Samples_LipschitzG_100.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.02,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9311750599520384
+        ],
+        "Test c_acc": [
+            0.9755707411957412
+        ]
+    },
+    {
+        "model_name": "dl2/gtsrb_dl2_100Epochs_50Samples_LipschitzG_100.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.04,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9311750599520384
+        ],
+        "Test c_acc": [
+            0.8346194205569206
+        ]
+    },
+    {
+        "model_name": "dl2/gtsrb_dl2_100Epochs_50Samples_LipschitzG_100.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.06,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9311750599520384
+        ],
+        "Test c_acc": [
+            0.6733466420966421
+        ]
+    },
+    {
+        "model_name": "dl2/gtsrb_dl2_100Epochs_50Samples_LipschitzG_100.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.08,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9311750599520384
+        ],
+        "Test c_acc": [
+            0.5181459868959869
+        ]
+    },
+    {
+        "model_name": "dl2/gtsrb_dl2_100Epochs_50Samples_LipschitzG_100.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.1,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9311750599520384
+        ],
+        "Test c_acc": [
+            0.38907017813267813
+        ]
+    },
+    {
+        "model_name": "dl2/gtsrb_dl2_100Epochs_50Samples_LipschitzG_100.pth",
+        "samples": 50,
+        "name": "LipschitzG",
+        "constraint_params": {
+            "eps": 0,
+            "L": 10
+        },
+        "Test p_acc": [
+            0.9311750599520384
+        ],
+        "Test c_acc": [
+            1.0
+        ]
+    }
+]

@@ -1,0 +1,542 @@
+[
+    {
+        "model_name": "baseline/fashion_mnist_baseline_100Epochs_98.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9251
+        ],
+        "Test c_acc": [
+            0.9929786392405063
+        ]
+    },
+    {
+        "model_name": "baseline/fashion_mnist_baseline_100Epochs_98.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.02,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9251
+        ],
+        "Test c_acc": [
+            0.5838607594936709
+        ]
+    },
+    {
+        "model_name": "baseline/fashion_mnist_baseline_100Epochs_98.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.04,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9251
+        ],
+        "Test c_acc": [
+            0.04519382911392405
+        ]
+    },
+    {
+        "model_name": "baseline/fashion_mnist_baseline_100Epochs_98.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.06,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9251
+        ],
+        "Test c_acc": [
+            0.00039556962025316455
+        ]
+    },
+    {
+        "model_name": "baseline/fashion_mnist_baseline_100Epochs_98.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.08,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9251
+        ],
+        "Test c_acc": [
+            0.0
+        ]
+    },
+    {
+        "model_name": "baseline/fashion_mnist_baseline_100Epochs_98.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.1,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9251
+        ],
+        "Test c_acc": [
+            0.0
+        ]
+    },
+    {
+        "model_name": "augmented/fashion_mnist_augmented_100Epochs_96.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9276
+        ],
+        "Test c_acc": [
+            0.9869462025316456
+        ]
+    },
+    {
+        "model_name": "augmented/fashion_mnist_augmented_100Epochs_96.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.02,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9276
+        ],
+        "Test c_acc": [
+            0.5239319620253164
+        ]
+    },
+    {
+        "model_name": "augmented/fashion_mnist_augmented_100Epochs_96.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.04,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9276
+        ],
+        "Test c_acc": [
+            0.051720727848101264
+        ]
+    },
+    {
+        "model_name": "augmented/fashion_mnist_augmented_100Epochs_96.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.06,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9276
+        ],
+        "Test c_acc": [
+            0.0020767405063291137
+        ]
+    },
+    {
+        "model_name": "augmented/fashion_mnist_augmented_100Epochs_96.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.08,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9276
+        ],
+        "Test c_acc": [
+            0.0
+        ]
+    },
+    {
+        "model_name": "augmented/fashion_mnist_augmented_100Epochs_96.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.1,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9276
+        ],
+        "Test c_acc": [
+            0.0
+        ]
+    },
+    {
+        "model_name": "augmented_FGSM/fashion_mnist_augmented_FGSM_100Epochs_89.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9515
+        ],
+        "Test c_acc": [
+            0.994560917721519
+        ]
+    },
+    {
+        "model_name": "augmented_FGSM/fashion_mnist_augmented_FGSM_100Epochs_89.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.02,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9515
+        ],
+        "Test c_acc": [
+            0.7203322784810127
+        ]
+    },
+    {
+        "model_name": "augmented_FGSM/fashion_mnist_augmented_FGSM_100Epochs_89.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.04,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9515
+        ],
+        "Test c_acc": [
+            0.13212025316455697
+        ]
+    },
+    {
+        "model_name": "augmented_FGSM/fashion_mnist_augmented_FGSM_100Epochs_89.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.06,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9515
+        ],
+        "Test c_acc": [
+            0.004944620253164557
+        ]
+    },
+    {
+        "model_name": "augmented_FGSM/fashion_mnist_augmented_FGSM_100Epochs_89.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.08,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9515
+        ],
+        "Test c_acc": [
+            0.0
+        ]
+    },
+    {
+        "model_name": "augmented_FGSM/fashion_mnist_augmented_FGSM_100Epochs_89.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.1,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9515
+        ],
+        "Test c_acc": [
+            0.0
+        ]
+    },
+    {
+        "model_name": "baseline/fashion_mnist_baseline_100Epochs_80_FGSM.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9223
+        ],
+        "Test c_acc": [
+            0.994560917721519
+        ]
+    },
+    {
+        "model_name": "baseline/fashion_mnist_baseline_100Epochs_80_FGSM.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.02,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9223
+        ],
+        "Test c_acc": [
+            0.9331487341772152
+        ]
+    },
+    {
+        "model_name": "baseline/fashion_mnist_baseline_100Epochs_80_FGSM.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.04,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9223
+        ],
+        "Test c_acc": [
+            0.6546677215189873
+        ]
+    },
+    {
+        "model_name": "baseline/fashion_mnist_baseline_100Epochs_80_FGSM.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.06,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9223
+        ],
+        "Test c_acc": [
+            0.302314082278481
+        ]
+    },
+    {
+        "model_name": "baseline/fashion_mnist_baseline_100Epochs_80_FGSM.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.08,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9223
+        ],
+        "Test c_acc": [
+            0.0959256329113924
+        ]
+    },
+    {
+        "model_name": "baseline/fashion_mnist_baseline_100Epochs_80_FGSM.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.1,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9223
+        ],
+        "Test c_acc": [
+            0.02966772151898734
+        ]
+    },
+    {
+        "model_name": "dl2/fashion_mnist_dl2_100Epochs_50Samples_0Pretrain_88.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9218
+        ],
+        "Test c_acc": [
+            1.0
+        ]
+    },
+    {
+        "model_name": "dl2/fashion_mnist_dl2_100Epochs_50Samples_0Pretrain_88.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.02,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9218
+        ],
+        "Test c_acc": [
+            1.0
+        ]
+    },
+    {
+        "model_name": "dl2/fashion_mnist_dl2_100Epochs_50Samples_0Pretrain_88.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.04,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9218
+        ],
+        "Test c_acc": [
+            0.9996044303797469
+        ]
+    },
+    {
+        "model_name": "dl2/fashion_mnist_dl2_100Epochs_50Samples_0Pretrain_88.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.06,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9218
+        ],
+        "Test c_acc": [
+            0.9973299050632911
+        ]
+    },
+    {
+        "model_name": "dl2/fashion_mnist_dl2_100Epochs_50Samples_0Pretrain_88.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.08,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9218
+        ],
+        "Test c_acc": [
+            0.9915941455696202
+        ]
+    },
+    {
+        "model_name": "dl2/fashion_mnist_dl2_100Epochs_50Samples_0Pretrain_88.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.1,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9218
+        ],
+        "Test c_acc": [
+            0.9878362341772152
+        ]
+    },
+    {
+        "model_name": "dl2/fashion_mnist_dl2_100Epochs_83_FGSM.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9223
+        ],
+        "Test c_acc": [
+            0.9937697784810127
+        ]
+    },
+    {
+        "model_name": "dl2/fashion_mnist_dl2_100Epochs_83_FGSM.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.02,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9223
+        ],
+        "Test c_acc": [
+            0.6139240506329114
+        ]
+    },
+    {
+        "model_name": "dl2/fashion_mnist_dl2_100Epochs_83_FGSM.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.04,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9223
+        ],
+        "Test c_acc": [
+            0.07387262658227849
+        ]
+    },
+    {
+        "model_name": "dl2/fashion_mnist_dl2_100Epochs_83_FGSM.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.06,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9223
+        ],
+        "Test c_acc": [
+            0.0025712025316455694
+        ]
+    },
+    {
+        "model_name": "dl2/fashion_mnist_dl2_100Epochs_83_FGSM.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.08,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9223
+        ],
+        "Test c_acc": [
+            9.889240506329114e-05
+        ]
+    },
+    {
+        "model_name": "dl2/fashion_mnist_dl2_100Epochs_83_FGSM.pth",
+        "samples": 50,
+        "name": "RobustnessG",
+        "constraint_params": {
+            "eps": 0.1,
+            "delta": 0.52
+        },
+        "Test p_acc": [
+            0.9223
+        ],
+        "Test c_acc": [
+            0.0
+        ]
+    }
+]

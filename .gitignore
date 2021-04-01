@@ -25,6 +25,3 @@ venv.bak/
 Data/
 *.csv
 *.pth
-CAV21Data/fashion_mnist_dl2_100Epochs_50Samples_0Pretrain.json
-CAV21Data/gtsrb_dl2_100Epochs_50Samples_0Pretrain.json
-CAV21Data/mnist_dl2_100Epochs_50Samples_0Pretrain.json
