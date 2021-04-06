@@ -1,3 +1,5 @@
+This is the code used in the paper: [Property-driven Training: All You (N)Ever Wanted to Know About](https://arxiv.org/abs/2104.01396)
+
 TRAINING WITH CONSTRAINTS
 ========
 
@@ -5,15 +7,16 @@ Structure
 ------------
 ```
 .
-├── dl2                                  - DL2 Library
-├── createBaselineDatasets.py            - script for creating the baseline datasets
-├── createAugmentedDatasets.py           - script for creating the Random Uniform augmented datasets
-├── createFGSMAugmentedDatasets.py       - script for creating the FGSM augmented datasets
-├── mainDL2.py                           - script for DL2 loss training
-├── mainFGSM.py                          - script for Constraint Loss (Adversarial Robustness) training
-├── mainPGD.py                           - script for Adversarial training
-├── testConstraintSecurity.py            - script for testing Constraint Security
-├── testConstraintLikelihood.py          - script for testing Constraint Likelihood
+├── src
+│   ├── dl2                                  - DL2 Library
+│   ├── createBaselineDatasets.py            - script for creating the baseline datasets
+│   ├── createAugmentedDatasets.py           - script for creating the Random Uniform augmented datasets
+│   ├── createFGSMAugmentedDatasets.py       - script for creating the FGSM augmented datasets
+│   ├── mainDL2.py                           - script for DL2 loss training
+│   ├── mainFGSM.py                          - script for Constraint Loss (Adversarial Robustness) training
+│   ├── mainPGD.py                           - script for Adversarial training
+│   ├── testConstraintSecurity.py            - script for testing Constraint Security
+│   └── testConstraintLikelihood.py          - script for testing Constraint Likelihood
 ├── createFolders.sh                     - script for creating the required folders for datasets and models
 └── requirements.txt                     - pip requirements
 
