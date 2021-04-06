@@ -14,6 +14,7 @@ Structure
 ├── mainPGD.py                           - script for Adversarial training
 ├── testConstraintSecurity.py            - script for testing Constraint Security
 ├── testConstraintLikelihood.py          - script for testing Constraint Likelihood
+├── createFolders.sh                     - script for creating the required folders for datasets and models
 └── requirements.txt                     - pip requirements
 
 ```
@@ -29,7 +30,7 @@ Install the dependencies:
 ```
 pip install -r requirements.txt
 ```
-To properly save the datasets and models create the following structure of folders:
+To properly save the datasets and models create the following structure of folders using ```createFolders.sh```:
 ```
 .
 ├── datasets
