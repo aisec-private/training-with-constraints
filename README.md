@@ -18,7 +18,6 @@ Structure
 │   ├── mainDL2.py                           - script for DL2 loss training
 │   ├── mainPGD.py                           - script for Adversarial training
 │   ├── testConstraintSecurity.py            - script for testing Constraint Security
-│   └── testConstraintLikelihood.py          - script for testing Constraint Likelihood
 ├── createFolders.sh                     - script for creating the required folders for datasets and models
 └── requirements.txt                     - pip requirements
 
@@ -91,8 +90,7 @@ python mainDL2.py --dataset gtsrb --dtype baseline --dl2-weight 0.2 --constraint
 python mainDL2.py --dataset gtsrb --dtype baseline --dl2-weight 0.2 --constraint "LipschitzG(eps=0.1, L=10)"
 python mainDL2.py --dataset gtsrb --dtype baseline --dl2-weight 0.2 --constraint "FGSM(eps=0.1, delta=10)"
 ```
-To test Constraint Security and Constraint Likelihood of the models obtained by the experiments above, run the commands:
+To test Constraint Security of the models obtained by the experiments above, run the command:
 ```
 python testConstraintSecurity.py
-python testConstraintLikelihood.py
 ```
